@@ -34,5 +34,8 @@ plt.imshow(image, cmap='gray')
 plt.axis("off")
 plt.show()
 
-np.savetxt(f"Dirac{num_points}-{sample}s{sample_order}.dat", image, header=f"sampling_step = {sample}e-0{sample_order}\nwavelength = 5e-07")
+file_name = f"Dirac{num_points}-{sample}s{sample_order}.dat"
+np.savetxt(file_name, image, header=f"sampling_step = {sample}e-0{sample_order}\nwavelength = 5e-07")
+
+print(f"The data has been saved\t{file_name}")
 

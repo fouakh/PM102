@@ -1,18 +1,16 @@
 import numpy as np
 
-frequency = [10, 50, 100, 500, 1000, 5000, 10000]
+sample = 5
+sample_order = 8
+number_points = 10000
 
-num_points = 100000
-start_time = 0
-end_time = 1
-sampling_rate = (end_time - start_time) / num_points
+sampling_rate = sample * 10 ** (-sample_order)
 
-time = np.arange(start_time, end_time, sampling_rate)
-data = np.zeros(num_points)
-for f in frequency:
-    data += np.sin(2 * np.pi * f * time)
+time = np.arange(0, number_points*sampling_rate, sampling_rate)
+data = np.zeros(len(time))
+data[0] = 1
 
-file_path = 'Data_for_filtre.s1e+07-sin1kHz-to-sin1MHz.dat'
-np.savetxt(file_path, data, delimiter='\n', header='sampling_step = 1e-06')
+file_name = f"dirac-{sample}s{sample_order}.dat"
+np.savetxt(file_name, data, delimiter='\n', header=f"sampling_step = {sample}e-0{sample_order}")
 
-print(f"The data has been saved to {file_path}.")
+print(f"The data has been saved\t{file_name}")
