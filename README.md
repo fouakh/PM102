@@ -13,5 +13,5 @@ cp Diracs5-s5.result ../../../../exterieurs/fkhelifi-23/Downloads/Images_for_ser
 
 # Git Bash (PM102)
 ```bash
-scp fkhelifi-23\@ssh.enst.fr:Downloads/Images_for_server_result/Diracs5-s5.result20240207170652.dat . Git Bash
+scp -r fkhelifi-23\@ssh.enst.fr:Downloads/Images_for_server_result/ . Git Bash
 ```
