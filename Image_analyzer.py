@@ -16,6 +16,6 @@ plt.axis("off")
 plt.show()
 
 # wavelength = 5e-07
-# sampling_step = 1e-07
-# pixels = 12
+# sampling_step = 1e-08
+# pixels = 10
 # print(2.44 * wavelength / (pixels * sampling_step) )
