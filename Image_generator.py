@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 num_points = 5
 radius = 3
-sample_order = 7
+sample_order = 8
 
 width, height = 500, 500
 
@@ -19,6 +19,7 @@ for i in range(num_points):
     image += (X - random_x[i]) ** 2 + (Y - random_y[i]) ** 2 <= radius ** 2
 # image[random_y, random_x] = 1
 
+
 x = np.arange(0, width, 1)
 y = np.arange(0, height, 1)
 X, Y = np.meshgrid(x, y) 
@@ -27,5 +28,5 @@ plt.imshow(image, cmap='gray')
 plt.axis("off")
 plt.show()
 
-np.savetxt(f"Circles{num_points}-s{sample_order}.dat", image, header=f"sampling_step = 1.0e-0{sample_order}\nwavelength = 5e-07")
+np.savetxt(f"Circles{num_points}-s{sample_order}.dat", image, header=f"sampling_step = 1e-0{sample_order}\nwavelength = 5e-07")
 
