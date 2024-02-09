@@ -18,11 +18,11 @@ cd ../../../cal/ffa/pm102-2024/serveur-j4/filtre-
 
 # 3. VM (Images_for_server)
 
-cp Diracs1-s3.dat ../../../../ffa/pm102-2024/serveur-j4/filtre- 
+cp Dirac1-1s3.dat ../../../../ffa/pm102-2024/serveur-j4/filtre- 
 
 # 4. VM (serveur-j4/filtre-)
 
-cp Diracs1-s3.result ../../../../exterieurs/fkhelifi-23/Downloads/Images_for_server_result
+cp Dirac1-1s3.result ../../../../exterieurs/fkhelifi-23/Downloads/Images_for_server_result
 
 # 5. Git Bash (PM102)
 
@@ -42,11 +42,11 @@ cd ../../../cal/ffa/pm102-2024/serveur-j2/filtre-
 
 # 3. VM (Data_for_server)
 
-cp diracs1-s3.dat ../../../../ffa/pm102-2024/serveur-j4/filtre- 
+cp dirac-1s3.dat ../../../../ffa/pm102-2024/serveur-j4/filtre- 
 
 # 4. VM (serveur-j4/filtre-)
 
-cp diracs1-s3.result ../../../../exterieurs/fkhelifi-23/Downloads/Data_for_server_result
+cp dirac-1s3.result ../../../../exterieurs/fkhelifi-23/Downloads/Data_for_server_result
 
 # 5. Git Bash (PM102)
 
