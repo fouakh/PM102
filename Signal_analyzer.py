@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-data = np.loadtxt('dirac-1s8.result20240209091426.dat' , dtype=complex,)
-sampling_step = 1e-08
+data = np.loadtxt('dirac-1s10.result20240209142517.dat' , dtype=complex,)
+sampling_step = 1e-10
 
 time = np.arange(0, len(data) * sampling_step, sampling_step)
 

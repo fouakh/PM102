@@ -10,7 +10,7 @@ ssh -i .ssh/ed fkhelifi-23@ssh.enst.fr
 ```bash
 # 1. Git Bash (PM102)
 
-scp -r Images_for_server/ fkhelifi-23\@ssh.enst.fr:Downloads/serveur-j4/filtre-   
+scp -r Images_for_server/ fkhelifi-23\@ssh.enst.fr:Downloads/  
 
 # 2. VM (fkhelifi-23)
 
@@ -47,7 +47,7 @@ rm -rf *
 ```bash
 # 1. Git Bash (PM102)
 
-scp -r Signals_for_server/ fkhelifi-23\@ssh.enst.fr:Downloads/serveur-j4/filtre-   
+scp -r Data_for_server/ fkhelifi-23\@ssh.enst.fr:Downloads/   
 
 # 2. VM (fkhelifi-23)
 
@@ -55,9 +55,9 @@ cd ../../../cal/ffa/pm102-2024/serveur-j2/filtre-
 
 # 3. VM (Data_for_server)
 
-cp dirac-1s3.dat ../../../../ffa/pm102-2024/serveur-j4/filtre- 
+cp dirac-1s3.dat ../../../../ffa/pm102-2024/serveur-j2/filtre- 
 
-# 4. VM (serveur-j4/filtre-)
+# 4. VM (serveur-j2/filtre-)
 
 cp dirac-1s3.result ../../../../exterieurs/fkhelifi-23/Downloads/Data_for_server_result
 

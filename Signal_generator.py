@@ -1,7 +1,7 @@
 import numpy as np
 
-sample = 5
-sample_order = 8
+sample = 1
+sample_order = 11
 number_points = 10000
 
 sampling_rate = sample * 10 ** (-sample_order)
