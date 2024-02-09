@@ -2,13 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-data = np.genfromtxt('Data_for_filtre.result-mystere-D-s1e+06-sin1kHz-to-sin100kHz.dat',
-                     names=True,
-                     dtype=complex,
-                     delimiter='\n')
-sampling_step = 1e-06
-
-data = [t[0] for t in data]
+data = np.loadtxt('dirac-1s8.result20240209091426.dat' , dtype=complex,)
+sampling_step = 1e-08
 
 time = np.arange(0, len(data) * sampling_step, sampling_step)
 
@@ -16,32 +11,32 @@ time = np.arange(0, len(data) * sampling_step, sampling_step)
 fft_result = np.fft.fft(data)
 freq = np.fft.fftfreq(len(data), sampling_step)
 
-
 magnitude_fft = np.abs(fft_result)
 phase_fft = np.angle(fft_result)
+max_mag = np.max(magnitude_fft)
+cutoff_mag = max_mag / np.sqrt(2)
+cutoff_index = np.argmax(magnitude_fft <= cutoff_mag)
+
+print(f'Cutoff Frequency:\t{freq[cutoff_index]}\tHz')
 
 plt.figure(figsize=(10, 8))
 
-plt.subplot(3, 1, 1)
-plt.plot(time, data, label='Signal temporel')
-plt.xlabel('Temps')
-plt.ylabel('Amplitude')
-plt.xlim(0, 0.1)
+plt.subplot(2, 1, 1)
+plt.plot(time, abs(data), label='h(t)')
+plt.xlabel('Time')
+plt.ylabel('Magnitude')
+#plt.xlim(0, 0.005)
 plt.legend()
 
-plt.subplot(3, 1, 2)
-plt.plot(freq, magnitude_fft, label='Module de la FFT')
-plt.xlabel('Fréquence')
-plt.ylabel('Module')
-
+plt.subplot(2, 1, 2)
+plt.plot(freq, magnitude_fft, label='|H(f)|')
+plt.xlabel('Frequence')
+plt.ylabel('Magnitude')
+plt.axvline(x=freq[cutoff_index], color='r', linestyle='--', label='Cutoff Frequency')
 plt.legend()
 
-plt.subplot(3, 1, 3)
-plt.plot(freq, phase_fft, label='Phase de la FFT')
-plt.xlabel('Fréquence')
-plt.ylabel('Phase')
-plt.legend()
 
 plt.tight_layout()
 plt.show()
+
 

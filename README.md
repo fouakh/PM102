@@ -27,7 +27,20 @@ cp Dirac1-1s3.result ../../../../exterieurs/fkhelifi-23/Downloads/Images_for_ser
 # 5. Git Bash (PM102)
 
 scp -r fkhelifi-23\@ssh.enst.fr:Downloads/Images_for_server_result/ . 
+
+cd Images_for_server_result/
+
+# 6. Git Bash (PM102/Images_for_server_result)
+# After checking the result, for the next filter
+
+rm -rf *
+
+# 7. VM (Images_for_server_result)
+
+rm -rf *
+
 ```
+
 
 # Steps for Signals -> Server
 
@@ -51,3 +64,14 @@ cp dirac-1s3.result ../../../../exterieurs/fkhelifi-23/Downloads/Data_for_server
 # 5. Git Bash (PM102)
 
 scp -r fkhelifi-23\@ssh.enst.fr:Downloads/Data_for_server_result/ . 
+
+cd Data_for_server_result/
+
+# 6. Git Bash (PM102/Data_for_server_result)
+# After checking the result, for the next filter
+
+rm -rf *
+
+# 7. VM (Data_for_server_result)
+
+rm -rf *
