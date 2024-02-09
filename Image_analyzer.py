@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import ConnectionPatch
 
-data = np.loadtxt('Dirac1-1s3.result20240209093525.dat', dtype=complex)
+data = np.loadtxt('Dirac1-1s3.result20240209112501.dat', dtype=complex)
 
 ift = np.fft.ifftshift(data)
 ift = np.fft.ifft2(ift)
