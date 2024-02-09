@@ -2,12 +2,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random as rd
 
-data = np.loadtxt('Quiz_normal_001.dat')
+data = np.loadtxt('001.dat')
 step = 0.001
 
-more_data = result_array = np.concatenate((data, np.zeros(1000000)))
+more_data = result_array = np.concatenate((data, np.zeros(100000)))
 time = np.arange(0, len(more_data)* step, step)
-window = [305, 315]
+window1 = [334, 336]
+window2 = [125, 130]
+window = [210, 212]
 
 fft_result = np.fft.fft(more_data)
 freq = np.fft.fftfreq(len(more_data), time[1] - time[0])
@@ -18,6 +20,9 @@ fig, axs = plt.subplots(3, 1, figsize=(6, 7))
 
 index_start = np.where(np.abs(freq - window[0]) < 0.1)[0][0]
 index_finish = np.where(np.abs(freq - window[1]) < 0.1)[0][0]
+# index_start = 0
+# index_finish = -1
+
 index_sorted = np.argsort(magnitude_fft[index_start:index_finish])
 max_index = index_sorted[-1]
 print(f"frequence = {freq[index_start + max_index]}")
@@ -32,7 +37,7 @@ for i, ax in enumerate(axs):
     elif i == 1:
         ax.scatter(freq, phase_fft, color=f'#{rd.randint(0, 0xFFFFFF):06x}', s=1, label=r'$\phi(F)$')
         ax.set_ylabel(r'$\phi(F(f))$')
-        ax.set_xlim(window[0], window[1])
+        #ax.set_xlim(window[0], window[1])
     else:
         ax.scatter(time, more_data, color=f'#{rd.randint(0, 0xFFFFFF):06x}', s=1, label=r'$f(t)$')
         ax.set_ylabel(r'$f(t)$')
