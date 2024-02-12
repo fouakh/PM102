@@ -44,7 +44,7 @@ class DiffractionOrder:
 
         index = np.unravel_index(np.argmax(self.xg == self.wavelengths[j]), self.xg.shape)
 
-        silly_coeff = (100 * self.sigma[j] ** 2 * self.a * self.N * 1000)
+        silly_coeff = (100 * self.sigma[j] ** 2 * self.a * self.N * self.lenWindow)
         self.Red_Img += self.yr[index] / silly_coeff * np.abs(ft)
         self.Blue_Img += self.yb[index] / silly_coeff * np.abs(ft)
         self.Green_Img += self.yg[index] / silly_coeff * np.abs(ft)       
@@ -53,7 +53,7 @@ class DiffractionOrder:
         for j in range(len(self.wavelengths)):
             self.fft_wl(j)
 
-        another_silly_coeff = 6
+        another_silly_coeff = 5
         self.Red_Img = 255 * self.Red_Img * another_silly_coeff
         self.Blue_Img = 255 * self.Blue_Img * another_silly_coeff 
         self.Green_Img = 255 * self.Green_Img * another_silly_coeff 
