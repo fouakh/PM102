@@ -19,11 +19,10 @@ class DiffractionOrder:
 
         self.a = 4
         self.N = 40
-        self.d = 1000 / self.N
+        self.lenWindow = 600
+        self.d = self.lenWindow / self.N
         self.alpha = self.a * self.sigma
-        self.M = self.N * self.sigma
-        self.M = self.M.astype(int)
-        self.delta = 1000 / self.M
+        self.delta = self.d * self.sigma
 
         self.x = np.arange(-500, 501, 1)
         self.X, self.Y = np.meshgrid(self.x, self.x)
@@ -34,9 +33,9 @@ class DiffractionOrder:
 
     def fft_wl(self, j):
         grating = np.zeros_like(self.X)
-        for i in range(-self.M[j] // 2, self.M[j] // 2 + 1):
+        for i in range(-self.N // 2, self.N // 2 + 1):
             x_offset = i * self.delta[j]
-            mask = (np.abs(self.X - x_offset) <= self.alpha[j] / 2)
+            mask = (np.abs(self.X - x_offset) <= self.alpha[j] / 2) & (np.abs(self.Y) <= self.lenWindow / 2)
             grating[mask] = 1
 
         ft = np.fft.fftshift(grating)
@@ -53,7 +52,8 @@ class DiffractionOrder:
     def calculate_rgb_image(self):
         for j in range(len(self.wavelengths)):
             self.fft_wl(j)
-        another_silly_coeff = 3
+
+        another_silly_coeff = 6
         self.Red_Img = 255 * self.Red_Img * another_silly_coeff
         self.Blue_Img = 255 * self.Blue_Img * another_silly_coeff 
         self.Green_Img = 255 * self.Green_Img * another_silly_coeff 
@@ -75,11 +75,11 @@ class DiffractionOrder:
         plt.annotate('', xy=point1, xytext=point2, arrowprops=arrow_props, fontsize=8, ha='center', va='center')
         plt.text((point1[0] + point2[0]) / 2, (point1[1] + point2[1]) / 2 - 6, 
                 f'Distance: {self.dist_order1[i]:.2f} p',color='yellow', ha='center', va='center', fontsize=8)
-        plt.xlim([430, 570])
+        plt.xlim([420, 590])
         plt.ylim([485, 515])
 
     def plot_all(self):
-        points1 = [(463, 500) , (456, 500), (446, 500)]
+        points1 = [(451, 500) , (440, 500), (429, 500)]
         points2 = [(500, 500) , (500, 500), (500, 500)]
         for i in range(len(self.wavelengths)):
             self.subplot(i, points1[i], points2[i])
